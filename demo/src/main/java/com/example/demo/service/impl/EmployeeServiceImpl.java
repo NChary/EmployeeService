@@ -49,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public String deleteEmployee(Long id) {
+	public String deleteEmployee(Integer id) {
 		employeeRepository.deleteById(id);
 		return "Employee deleted successfully";
 	}
