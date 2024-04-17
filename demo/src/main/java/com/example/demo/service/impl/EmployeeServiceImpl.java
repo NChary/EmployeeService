@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.exceptions.EmployeeNotFound;
+import com.example.demo.model.ApiResponse;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.EmployeeService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -18,11 +22,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 	
 	@Override
-	public String saveEmployeeDetails(Employee employee) {
+	public ApiResponse saveEmployeeDetails(Employee employee) {
 		
-		employeeRepository.save(employee);
+		log.info("Save employee request received @Service");
 		
-		return "Employee Details Saved successfully";
+		ApiResponse apiResponse = null;
+		
+		Employee empObj = employeeRepository.save(employee);
+		
+		if(empObj.getId()>0) {
+			
+			apiResponse = ApiResponse.builder()
+									 .statusCode("000")
+									 .message("Employee Details Saved successfully")
+									 .build();
+			
+		}else{
+			
+			apiResponse = ApiResponse.builder()
+									 .statusCode("9001")
+									 .message("Unable to save employee details")
+									 .build();
+			
+		}
+		
+		return apiResponse;
 	}
 
 	@Override

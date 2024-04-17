@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(EmployeeNotFound.class)
 	public ResponseEntity<ApiResponse> employeeNotFound(EmployeeNotFound employee) {
-		 return new ResponseEntity<>(new ApiResponse(employee.getMessage()),HttpStatus.OK);
+		 return new ResponseEntity<>(new ApiResponse("000",employee.getMessage()),HttpStatus.OK);
 	}
 	
 }

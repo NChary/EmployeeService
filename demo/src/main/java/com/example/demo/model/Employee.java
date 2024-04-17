@@ -6,7 +6,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="employee")
 public class Employee {
@@ -27,39 +31,4 @@ public class Employee {
 	
 	@Column(name="salary")
 	private double salary;
-	
-	public int getId() {
-		return id;
-	}
-	public int getEid() {
-		return eid;
-	}
-	public String getName() {
-		return name;
-	}
-	
-	public double getSalary() {
-		return salary;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public void setEid(int eid) {
-		this.eid = eid;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
-	public String getEmailId() {
-		return emailId;
-	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-	
-	
 }
