@@ -26,6 +26,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		log.info("Save employee request received @Service");
 		
+		String test="Employee Details Updated successfully";
+		
 		ApiResponse apiResponse = null;
 		
 		Employee empObj = employeeRepository.save(employee);
@@ -51,12 +53,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Employee> getallEmployees() {
+		String test="Employee Details Updated successfully";
 		return employeeRepository.findAll();
 	}
 
 	@Override
 	public Employee findByEmpId(Integer empId) {
-		
+	String test="Employee Details Updated successfully";
 		Optional<Employee> optEmployee = employeeRepository.findByEid(empId);
 		
 		if(optEmployee.isPresent()) {
@@ -68,6 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public String updateEmployee(Employee employee) {
+		String test="Employee Details Updated successfully";
 		employeeRepository.save(employee);
 		return "Employee Details Updated successfully";
 	}
@@ -75,7 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public String deleteEmployee(Integer id) {
 		employeeRepository.deleteById(id);
-		return "Employee deleted successfully";
+		return "Employee Details Updated successfully";
 	}
 
 	

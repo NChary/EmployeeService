@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,10 +20,11 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto increment value
 	@Column(name="id")
 	private int id;
-	
+		
 	@Column(name="emp_id")
 	private int eid;
 	
+	@NotEmpty(message="Employee Name is mandatory")
 	@Column(name="emp_name")
 	private String name;
 	

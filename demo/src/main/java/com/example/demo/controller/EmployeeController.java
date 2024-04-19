@@ -18,6 +18,7 @@ import com.example.demo.model.Employee;
 import com.example.demo.service.EmployeeService;
 import com.example.demo.util.DemoUtil;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -26,23 +27,23 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
-	
+
 	@Autowired
 	private DemoUtil demoUtil;
-	
+
 	@GetMapping("/greet")
 	public String greeting() {
 		return "Hello - RESTFul webservice";
 	}
-	
+
 	@PostMapping("/employee")
-	public ResponseEntity<ApiResponse> saveEmployee(@RequestBody Employee employee) {
+	public ResponseEntity<ApiResponse> saveEmployee(@Valid @RequestBody Employee employee) {
 		log.info("Request received for save employee = "+employee.getEid());
 		ApiResponse apiResponse = employeeService.saveEmployeeDetails(employee);
 		log.info("Save employee response = "+demoUtil.convertObjectToJson(apiResponse));
 		return new ResponseEntity<>(apiResponse,HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/employee")
 	public List<Employee> getAllEmployees(){
 		return employeeService.getallEmployees();
@@ -58,14 +59,14 @@ public class EmployeeController {
 	public String updateEmployee(@RequestBody Employee employee) {
 		return employeeService.updateEmployee(employee);
 	}
-	
+
 	//Delete
 	@DeleteMapping("/employee/{empId}")
 	public String deleteEmployee(@PathVariable Integer empId) {
 		return employeeService.deleteEmployee(empId);
-			}
-	
+	}
+
 	//Add Method Delete 
-	
+
 }
 
